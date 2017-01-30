@@ -1,8 +1,18 @@
-# gulp-rgcsspack
+# gulp-res-to-hash
 
-Собираем sass файл на основе блоков, подключенных в данных.
-В данном случае ищем по ключевому свойству, значением которого будет путь до блока
+Смотрит файл и по его ресурсу пдставляет хеш
 
-Подключается первым, потом идет обработка swig шаблонов через gulp-rgswig
+# Пример задачи
 
-Весь алгоритм подробно описан в комментариях к коду
+gulp.task('restohash', function() {
+
+    var filename = minimist(process.argv).name || '*'
+
+    return gulp
+        .src('./dest/' + filename + '.html')
+        .pipe(gulpResToHash())
+        .pipe(gulp.dest(function(file) {
+            return file.base;
+        }));
+
+});
