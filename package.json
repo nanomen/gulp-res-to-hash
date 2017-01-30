@@ -1,0 +1,29 @@
+{
+  "name": "gulp-res-to-hash",
+  "version": "0.1.0",
+  "description": "Plugin for Gulp from rg.ru developers",
+  "keywords": [
+    "gulpplugin",
+    "filehash",
+    "resourse"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nanomen/gulp-res-to-hash.git"
+  },
+  "author": {
+    "name": "RG team",
+    "email": "dev@rg.ru"
+  },
+  "dependencies": {
+    "event-stream": "~3.0.15",
+    "gulp": "~3.5.1"
+  },
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/nanomen/gulp-res-to-hash/issues"
+  },
+  "readme": "# gulp-res-to-hash\n\nНаходим внешние ресурсы и проставляем к их подключению хеш файла",
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/nanomen/gulp-res-to-hash#readme"
+}
