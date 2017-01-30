@@ -4,6 +4,7 @@
 
 # Пример задачи
 
+``` js
 gulp.task('restohash', function() {
 
     var filename = minimist(process.argv).name || '*'
@@ -16,3 +17,4 @@ gulp.task('restohash', function() {
         }));
 
 });
+```
