@@ -111,20 +111,45 @@ module.exports = function(userOptions) {
             let hash = '',
                 contentFile = '';
 
+            // console.log('----------------');
+            // console.log(parentDir(parentDir(parentDir(parentDir(parentDir(parentDir(filePath)))))));
+            // console.log(pathToRes);
+            // console.log(!/custom/.test(filePath));
+
             // Составляем путь до ресурса
-            pathToRes = parentDir(parentDir(filePath)) + '/public/' + pathToRes;
+            // Если обычный шаблон, то выходим на два уровня выше
+            // Если это кастомный шаблон, то будет поиск выше
+            if (!/custom/.test(filePath)) {
+
+                pathToRes = parentDir(parentDir(filePath)) + '/public/' + pathToRes;
+
+            } else {
+
+                pathToRes = parentDir(parentDir(parentDir(parentDir(parentDir(parentDir(filePath)))))) + '/public/' + pathToRes;
+
+            }
+
+            // Удаляем пробелы, если есть
+            pathToRes = pathToRes.trim();
+
+            // Удалим старый хеш, если есть
+            pathToRes = pathToRes.replace(/\?[A-Za-z0-9?-_\.]+$/gi, '');
 
             // console.log('to hash ' + pathToRes);
 
             // Получаем тело файла
-            contentFile = fs.readFileSync(pathToRes).toString();
+            try {
 
-            // Получаем хеш
-            hash = crypto
-                    .createHash('md5')
-                    .update(contentFile)
-                    .digest('hex')
-                    .substring(10, 0);
+                contentFile = fs.readFileSync(pathToRes).toString();
+
+                // Получаем хеш
+                hash = crypto
+                        .createHash('md5')
+                        .update(contentFile)
+                        .digest('hex')
+                        .substring(10, 0);
+
+            } catch (err) {}
 
             return hash;
 
