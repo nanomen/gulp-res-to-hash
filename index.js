@@ -92,6 +92,9 @@ module.exports = function(userOptions) {
                     // Обновленная строка
                     replasedMatch = null;
 
+                // Удалим старый хеш, если есть
+                strForReplace = strForReplace.replace(/\?[A-Za-z0-9?-_\.]+/gi, '');
+
                 replasedMatch = `${strForReplace}?${fileHash}"`;
 
                 return replasedMatch;
@@ -135,7 +138,7 @@ module.exports = function(userOptions) {
             // Удалим старый хеш, если есть
             pathToRes = pathToRes.replace(/\?[A-Za-z0-9?-_\.]+$/gi, '');
 
-            // console.log('to hash ' + pathToRes);
+            console.log('to hash ' + pathToRes);
 
             // Получаем тело файла
             try {
