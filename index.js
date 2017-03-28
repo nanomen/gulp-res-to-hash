@@ -82,7 +82,7 @@ module.exports = function(userOptions) {
          */
         function checkResForHash(str) {
 
-            return str.replace(/([src|href]+="\/res\/([A-Za-z0-9\/-_.]+))"/gi, function(match, strForReplace, pathToRes) {
+            return str.replace(/([src|href]+="\/res\/([A-Za-z0-9\/_.-]+))"/gi, function(match, strForReplace, pathToRes) {
 
                 let
 
