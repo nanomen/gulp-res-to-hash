@@ -150,7 +150,7 @@ module.exports = function(userOptions) {
                         .createHash('md5')
                         .update(contentFile)
                         .digest('hex')
-                        .substring(10, 0);
+                        .substring(12, 0);
 
             } catch (err) {}
 
